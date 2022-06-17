@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/usersListFragment">
+
+    <fragment
+        android:id="@+id/usersListFragment"
+        android:name="com.example.githubuserlist.ui.UsersListFragment"
+        android:label="Users"
+        tools:layout="@layout/fragment_users_list" >
+        <action
+            android:id="@+id/action_usersListFragment_to_favoriteUsersFragment"
+            app:destination="@id/favoriteUsersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteUsersFragment"
+        android:name="com.example.githubuserlist.ui.FavoriteUsersFragment"
+        android:label="Favorites"
+        tools:layout="@layout/fragment_favorite_users" />
+</navigation>
