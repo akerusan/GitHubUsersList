@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LifecycleOwner
@@ -71,13 +73,23 @@ class SingleUserActivity : AppCompatActivity() {
                 }
             }
             is NetworkResult.Error -> {
-                //loadDataFromCache()
-                //Toast.makeText(requireContext(), response.message.toString(), Toast.LENGTH_SHORT)
+                loadDataFromCache()
+                Toast.makeText(baseContext, response.message.toString(), Toast.LENGTH_SHORT)
             }
             is NetworkResult.Loading -> {
                 Log.d("SingleUserActivity", "loading")
             }
         }
+    }
+
+    // Access the users' list via the cache (db)
+    private fun loadDataFromCache() {
+        viewModel.getSingleUserFromLocal(args.id).observe(this, Observer { exist ->
+            if (exist != null) {
+                mBinding.singleUser = exist.user
+                mBinding.executePendingBindings()
+            }
+        })
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

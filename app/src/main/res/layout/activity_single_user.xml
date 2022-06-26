@@ -127,7 +127,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Number of public repos:"
+            android:text="@string/number_of_public_repos"
             app:layout_constraintStart_toStartOf="@+id/iv_single_user_mail"
             app:layout_constraintTop_toBottomOf="@+id/iv_single_user_mail" />
 
@@ -146,7 +146,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Twitter:"
+            android:text="@string/twitter"
             app:layout_constraintStart_toStartOf="@+id/tv_single_user_repos"
             app:layout_constraintTop_toBottomOf="@+id/tv_single_user_repos" />
 
