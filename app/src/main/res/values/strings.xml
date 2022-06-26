@@ -3,4 +3,9 @@
 
     <string name="users">Users</string>
     <string name="favorites">Favorites</string>
+
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="floating_action_button">floating action button</string>
+    <string name="followers">Followers</string>
+
 </resources>

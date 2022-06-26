@@ -7,16 +7,31 @@
 
     <fragment
         android:id="@+id/usersListFragment"
-        android:name="com.example.githubuserlist.ui.UsersListFragment"
+        android:name="com.example.githubuserlist.ui.list.UsersListFragment"
         android:label="Users"
         tools:layout="@layout/fragment_users_list" >
         <action
             android:id="@+id/action_usersListFragment_to_favoriteUsersFragment"
             app:destination="@id/favoriteUsersFragment" />
+        <action
+            android:id="@+id/action_usersListFragment_to_singleUserActivity"
+            app:destination="@id/singleUserActivity" />
     </fragment>
     <fragment
         android:id="@+id/favoriteUsersFragment"
-        android:name="com.example.githubuserlist.ui.FavoriteUsersFragment"
+        android:name="com.example.githubuserlist.ui.favorites.FavoriteUsersFragment"
         android:label="Favorites"
         tools:layout="@layout/fragment_favorite_users" />
+    <activity
+        android:id="@+id/singleUserActivity"
+        android:name="com.example.githubuserlist.ui.single.SingleUserActivity"
+        android:label="User Details"
+        tools:layout="@layout/activity_single_user" >
+        <argument
+            android:name="username"
+            app:argType="string" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </activity>
 </navigation>
