@@ -27,6 +27,7 @@
         <activity
             android:name=".ui.single.SingleUserActivity"
             android:label="User Details"
+            android:theme="@style/SingleUserActivityStyle"
             android:exported="false" />
     </application>
 

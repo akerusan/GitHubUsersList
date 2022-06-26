@@ -2,6 +2,9 @@ package com.example.githubuserlist.ui.single
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.MenuItem
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
@@ -15,6 +18,7 @@ import com.example.githubuserlist.utils.NetworkResult
 import com.example.githubuserlist.utils.observeOnce
 import com.example.githubuserlist.viewModels.SingleUserViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_single_user.*
 import kotlinx.coroutines.launch
 import java.util.*
 
@@ -30,6 +34,10 @@ class SingleUserActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_single_user)
+
+        setSupportActionBar(toolbar)
+        toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         viewModel = ViewModelProvider(this)[SingleUserViewModel::class.java]
 
@@ -57,7 +65,6 @@ class SingleUserActivity : AppCompatActivity() {
     private fun handleApiResponse(response: NetworkResult<SingleUser>) {
         when (response) {
             is NetworkResult.Success -> {
-                //hideShimmer()
                 response.data?.let {
                     mBinding.singleUser = it
                     mBinding.executePendingBindings()
@@ -65,12 +72,18 @@ class SingleUserActivity : AppCompatActivity() {
             }
             is NetworkResult.Error -> {
                 //loadDataFromCache()
-                //hideShimmer()
                 //Toast.makeText(requireContext(), response.message.toString(), Toast.LENGTH_SHORT)
             }
             is NetworkResult.Loading -> {
-                //showShimmer()
+                Log.d("SingleUserActivity", "loading")
             }
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

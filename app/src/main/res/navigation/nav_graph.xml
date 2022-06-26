@@ -15,7 +15,11 @@
             app:destination="@id/favoriteUsersFragment" />
         <action
             android:id="@+id/action_usersListFragment_to_singleUserActivity"
-            app:destination="@id/singleUserActivity" />
+            app:destination="@id/singleUserActivity"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/slide_out"
+            app:popExitAnim="@anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/favoriteUsersFragment"
